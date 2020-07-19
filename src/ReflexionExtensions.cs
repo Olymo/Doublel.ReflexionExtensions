@@ -25,6 +25,18 @@ namespace Doublel.ReflexionExtensions
                 : default;
         }
 
+        public static TValue GetAttributeValue<TAttribute, TValue>(
+                this PropertyInfo property,
+                Func<TAttribute, TValue> valueSelector)
+                where TAttribute : Attribute
+        {
+            return property.GetCustomAttributes(
+                typeof(TAttribute), true
+            ).FirstOrDefault() is TAttribute att
+                ? valueSelector(att)
+                : default;
+        }
+
         public static IEnumerable<T> GetAttibutes<T>(this object obj) where T : Attribute
         {
             foreach (var property in obj.GetType().GetProperties())
@@ -34,6 +46,21 @@ namespace Doublel.ReflexionExtensions
                     yield return property.GetAttribute<T>();
                 }
             }
+        }
+
+        public static PropertyInfo GetProperty(this object obj, string propertyName)
+        {
+            if(!PropertyCanBeAccessed(obj.GetType(), propertyName))
+            {
+                return null;
+            }
+
+            if(IsNavigationProperty(propertyName))
+            {
+                return null;
+            }
+
+            return obj.GetType().GetProperty(propertyName);
         }
 
         public static T GetAttribute<T>(this PropertyInfo property) where T : Attribute => Attribute.GetCustomAttribute(property, typeof(T)) as T;
@@ -63,8 +90,6 @@ namespace Doublel.ReflexionExtensions
             return t.GetProperties().Any(x => x.Name == propertyName);
         }
 
-        private static bool IsNavigationProperty(string property) => property.Split('.').Count() > 1;
-
         public static IEnumerable<T> GetAllImplementers<T>(this Assembly destinationAssembly) where T : class
         {
             var objects = new List<T>();
@@ -76,5 +101,7 @@ namespace Doublel.ReflexionExtensions
             }
             return objects;
         }
+
+        private static bool IsNavigationProperty(string property) => property.Split('.').Count() > 1;
     }
 }
