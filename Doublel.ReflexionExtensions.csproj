@@ -10,6 +10,7 @@
       Library used to support both multy tenancy and user level entity access built on top of Entity Framework Core.
     </Description>
     <RepositoryUrl>https://github.com/Olymo/Doublel.ReflexionExtensions</RepositoryUrl>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
