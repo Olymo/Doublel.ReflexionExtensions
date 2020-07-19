@@ -1,2 +1,3 @@
-# Doublel.ReflexionExtensions
-Set of usefull extension methods for reflexion
+# Set of usefull reflexion extension methods
+To install latest version run 
+`dotnet add package Doublel.ReflexionExtensions`
