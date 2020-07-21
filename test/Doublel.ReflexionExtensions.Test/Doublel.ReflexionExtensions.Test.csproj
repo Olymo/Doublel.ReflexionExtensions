@@ -1,18 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <PackageId>Doublel.ReflexionExtensions</PackageId>
-    <Version>1.0.1</Version>
-    <Authors>Luka Lukić</Authors>
-    <Company>Olymo</Company>
-    <Description>
-      Set of usefull reflexion extension methods.
-    </Description>
-    <RepositoryUrl>https://github.com/Olymo/Doublel.ReflexionExtensions</RepositoryUrl>
-    <IsPackable>true</IsPackable>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
@@ -22,5 +12,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Doublel.ReflexionExtensions.csproj" />
+  </ItemGroup>
 </Project>

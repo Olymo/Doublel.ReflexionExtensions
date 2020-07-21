@@ -69,7 +69,7 @@ namespace Doublel.ReflexionExtensions
         {
             if (IsNavigationProperty(propertyName))
             {
-                var propertyNames = propertyName.Split(".");
+                var propertyNames = propertyName.Split('.');
 
                 var typeToCheckPropertyAt = t;
 

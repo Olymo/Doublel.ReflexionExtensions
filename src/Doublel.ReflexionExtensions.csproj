@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Doublel.ReflexionExtensions</PackageId>
+    <Version>1.0.2</Version>
+    <Authors>Luka Lukić</Authors>
+    <Company>Olymo</Company>
+    <Description>
+      Set of usefull reflexion extension methods.
+    </Description>
+    <RepositoryUrl>https://github.com/Olymo/Doublel.ReflexionExtensions</RepositoryUrl>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+  
+</Project>
