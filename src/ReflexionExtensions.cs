@@ -103,5 +103,34 @@ namespace Doublel.ReflexionExtensions
         }
 
         private static bool IsNavigationProperty(string property) => property.Split('.').Count() > 1;
+
+        public static object GetPropertyValue(this object obj, string path)
+        {
+            if (!PropertyCanBeAccessed(obj.GetType(), path))
+            {
+                return null;
+            }
+
+            if (IsNavigationProperty(path))
+            {
+                var propertyNames = path.Split('.');
+
+                var typeToCheckPropertyAt = obj.GetType();
+
+                foreach (var property in propertyNames)
+                {
+                    if (typeToCheckPropertyAt.PropertyCanBeAccessed(property))
+                    {
+                        var propInfo = typeToCheckPropertyAt.GetProperty(property);
+                        typeToCheckPropertyAt = propInfo.PropertyType;
+                        obj = propInfo.GetValue(obj);
+                    }
+                }
+
+                return obj;
+            }
+
+            return obj.GetType().GetProperty(path).GetValue(obj);
+        }
     }
 }
