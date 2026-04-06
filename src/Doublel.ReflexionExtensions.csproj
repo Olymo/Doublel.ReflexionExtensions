@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <PackageId>Doublel.ReflexionExtensions</PackageId>
     <Version>1.0.2</Version>
     <Authors>Luka Lukić</Authors>
